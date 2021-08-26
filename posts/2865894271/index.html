@@ -398,7 +398,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    687
+                    652
                 </div>
                 
 
@@ -420,50 +420,50 @@
             <div id="articleContent">
                 <h2 id="二分查找算法"><a href="#二分查找算法" class="headerlink" title="二分查找算法"></a>二分查找算法</h2><p>1.确定数组的中间下标，mid=(left+right)/2。<br>2.需要查找数的findVal和arr[mid]比较，findVAal&gt;arr[mid]说明要查找的数在mid的右边，因此需要递归的向右查找，否则需要递归的向左查找。如果相等，说明找到了。<br>什么时候需要结束递归？left&gt;right。</p>
 <p>代码实现</p>
-<pre class="line-numbers language-Java" data-language="Java"><code class="language-Java">public class BinarySearch &#123;
-	public static void main(String[] args)&#123;
-		int arr[] &#x3D; &#123;1, 8, 10, 89, 1000, 1234&#125;;
-		int resIndex &#x3D; binnarySearch(arr, 0, arr.length-1, 1);
-		System.out.println(&quot;resIndex&#x3D;&quot; + resIndex);
-	&#125;
-	&#x2F;&#x2F;二分查找算法
-	&#x2F;&#x2F;@arr数组 @left左边的索引 @right 右边的索引 findVal查找的值 @return 找到就返回下标，没有找到就返回-1
-	public static ArrayList&lt;Integer&gt; binarySearch(int[] arr, int right, int left, int findVal) &#123;
-		if(left &gt; right)&#123;
-			return new ArrayList&lt;Integer&gt;();
-		&#125;
-		int mid &#x3D; (left+right) &#x2F; 2;
-		int midVal &#x3D; arr[mid];		
-		if(findVal &gt; midVal) &#123;
-			&#x2F;&#x2F;向右递归
-			return binarySearch(arr, mid+1, right, findVal)；
-		&#125;
-		else if(findVal &lt; mid)&#123;
-			return binarySearch(arr, left, mid-1, findVal);
-		&#125;
-		&#x2F;&#x2F;找到mid时索引不要返回。
-		else&#123;
-			ArrayList&lt;Integer&gt; resIndexlist &#x3D; new ArrayList&lt;Integer&gt;();
-			&#x2F;&#x2F;向左边扫描
-			int temp &#x3D; mid - 1;
-			while(ture) &#123;
-				if (temp &lt; 0 || arr[temp] !&#x3D; findVal) &#123;
-					break;
-				&#125;
-				resIndexlist.add(temp);
-				temp -&#x3D; 1;&#x2F;&#x2F;temp左移
-			&#125;
-			while(ture) &#123;
-				if (temp &gt; arr.length -1 || arr[temp] !&#x3D; findVal) &#123;
-					break;
-				&#125;
-				resIndexlist.add(temp);
-				temp +&#x3D; 1;&#x2F;&#x2F;temp左移
-			&#125;
-			return resIndexlist;
-		&#125;
-	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BinarySearch</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+		<span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">89</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">,</span> <span class="token number">1234</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+		<span class="token keyword">int</span> resIndex <span class="token operator">=</span> <span class="token function">binnarySearch</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> arr<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"resIndex="</span> <span class="token operator">+</span> resIndex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token comment">//二分查找算法</span>
+	<span class="token comment">//@arr数组 @left左边的索引 @right 右边的索引 findVal查找的值 @return 找到就返回下标，没有找到就返回-1</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> <span class="token function">binarySearch</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">,</span> <span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> findVal<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>left <span class="token operator">></span> right<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+			<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">int</span> mid <span class="token operator">=</span> <span class="token punctuation">(</span>left<span class="token operator">+</span>right<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+		<span class="token keyword">int</span> midVal <span class="token operator">=</span> arr<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">;</span>		
+		<span class="token keyword">if</span><span class="token punctuation">(</span>findVal <span class="token operator">></span> midVal<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token comment">//向右递归</span>
+			<span class="token keyword">return</span> <span class="token function">binarySearch</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> right<span class="token punctuation">,</span> findVal<span class="token punctuation">)</span>；
+		<span class="token punctuation">&#125;</span>
+		<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>findVal <span class="token operator">&lt;</span> mid<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+			<span class="token keyword">return</span> <span class="token function">binarySearch</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> left<span class="token punctuation">,</span> mid<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> findVal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token comment">//找到mid时索引不要返回。</span>
+		<span class="token keyword">else</span><span class="token punctuation">&#123;</span>
+			<span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> resIndexlist <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+			<span class="token comment">//向左边扫描</span>
+			<span class="token keyword">int</span> temp <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+			<span class="token keyword">while</span><span class="token punctuation">(</span>ture<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>temp <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">||</span> arr<span class="token punctuation">[</span>temp<span class="token punctuation">]</span> <span class="token operator">!=</span> findVal<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+					<span class="token keyword">break</span><span class="token punctuation">;</span>
+				<span class="token punctuation">&#125;</span>
+				resIndexlist<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				temp <span class="token operator">-=</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token comment">//temp左移</span>
+			<span class="token punctuation">&#125;</span>
+			<span class="token keyword">while</span><span class="token punctuation">(</span>ture<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+				<span class="token keyword">if</span> <span class="token punctuation">(</span>temp <span class="token operator">></span> arr<span class="token punctuation">.</span>length <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">||</span> arr<span class="token punctuation">[</span>temp<span class="token punctuation">]</span> <span class="token operator">!=</span> findVal<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+					<span class="token keyword">break</span><span class="token punctuation">;</span>
+				<span class="token punctuation">&#125;</span>
+				resIndexlist<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>temp<span class="token punctuation">)</span><span class="token punctuation">;</span>
+				temp <span class="token operator">+=</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token comment">//temp左移</span>
+			<span class="token punctuation">&#125;</span>
+			<span class="token keyword">return</span> resIndexlist<span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="插值查找算法"><a href="#插值查找算法" class="headerlink" title="插值查找算法"></a>插值查找算法</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">InsertValueSearch</span> <span class="token punctuation">&#123;</span>
 
 	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>

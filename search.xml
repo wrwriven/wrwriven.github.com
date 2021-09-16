@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>ML</title>
+      <link href="/posts/2070162956/"/>
+      <url>/posts/2070162956/</url>
+      
+        <content type="html"><![CDATA[<h2 id="6-逻辑回归-Logistic-Regression"><a href="#6-逻辑回归-Logistic-Regression" class="headerlink" title="6.逻辑回归(Logistic Regression)"></a>6.逻辑回归(Logistic Regression)</h2><h3 id="6-1分类问题"><a href="#6-1分类问题" class="headerlink" title="6.1分类问题"></a>6.1分类问题</h3><p>在分类问题中，我们尝试预测的是结果是否属于某一个类（例如正确或错误）。分类问题的例子有：判断一封电子邮件是否是垃圾邮件；判断一次金融交易是否是欺诈。</p><p>从二元的分类开始讨论。将因变量(dependent variable)可能属于的两个类分别称为负向（negative class）和正向类（positive class），则因变量 y∈0,1 ，其中 0表示负向类，1表示正向类。</p><p>如果我们要用线性回归算法来解决一个分类问题，对于分类，𝑦取值为0或者1，但如果你使用的是<strong>线性回归</strong>，那么假设函数的输出值可能远大于 1，或者远小于 0，即使所有训练样本的标签 𝑦 都等于0或 1。尽管我们知道标签应该取值0或者1，但是如果算法得到的值远大于1或者远小于0的话，就<strong>会感觉很奇怪</strong>。所以我们在接下来的要研究的算法就叫做<strong>逻辑回归算法</strong>，这个算法的性质是：它的输出值永远在0到1之间。顺便说一下，逻辑回归算法是分类算法，我们将它作为分类算法使用。有时候可能因为这个算法的名字中出现了 “回归 ”使你感到困惑 但<strong>逻辑回归算法实际上是一种分类算法</strong>，它适用于标签<strong>𝑦取值离散</strong>的情况，如：1 0 0 1。</p><h3 id="6-2假说表示"><a href="#6-2假说表示" class="headerlink" title="6.2假说表示"></a>6.2假说表示</h3><p>此，我们希望想出一个满足某个性质的假设函数，这个性质是它的预测值要在 0和1之间。<br>我们引入一个新的模型，逻辑回归，该模型的输出变量范围始终在0和1之间。逻辑回归模型的假设是：</p><p>$$h_{\theta}(x)=g(\theta^TX)</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Introduction</title>
+      <link href="/posts/3979448284/"/>
+      <url>/posts/3979448284/</url>
+      
+        <content type="html"><![CDATA[<h2 id="Supervised-Learning"><a href="#Supervised-Learning" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h2><h3 id="Supervised-Learning-1"><a href="#Supervised-Learning-1" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h3><p>In supervised learning, we are given a data set and already know what our correct output should look like, having the idea that there is a relationship between the input and the output.</p><p>Supervised learning problems are categorized into <strong>“regression”</strong> and <strong>“classification”</strong> problems. In a regression problem, we are trying to predict results within a continuous output, meaning that we are trying to map input variables to some continuous function. In a classification problem, we are instead trying to predict results in a discrete output. In other words, we are trying to map input variables into discrete categories. </p><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><p>Example 1:</p><p>Given data about the size of houses on the real estate market, try to predict their price. Price as a function of size is a continuous output, so this is a regression problem.</p><p>We could turn this example into a classification problem by instead making our output about whether the house “sells for more or less than the asking price.” Here we are classifying the houses based on price into two discrete categories.</p><p>Example 2:</p><p>(a) Regression - Given a picture of a person, we have to predict their age on the basis of the given picture</p><p>(b) Classification - Given a patient with a tumor, we have to predict whether the tumor is malignant or benign.</p><h2 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h2><h3 id="Unsupervised-Learning-1"><a href="#Unsupervised-Learning-1" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h3><p>Unsupervised learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don’t necessarily know the effect of the variables.</p><p>We can derive this structure by clustering the data based on relationships among the variables in the data.</p><p>With unsupervised learning there is no feedback based on the prediction results.</p><h3 id="Example-1"><a href="#Example-1" class="headerlink" title="Example:"></a>Example:</h3><p><strong>Clustering:</strong> Take a collection of 1,000,000 different genes, and find a way to automatically group these genes into groups that are somehow similar or related by different variables, such as lifespan, location, roles, and so on.</p><p><strong>Non-clustering:</strong> The “Cocktail Party Algorithm”, allows you to find structure in a chaotic environment. (i.e. identifying individual voices and music from a mesh of sounds at a cocktail party).</p><h2 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h2><h3 id="线性回归算法"><a href="#线性回归算法" class="headerlink" title="线性回归算法"></a>线性回归算法</h3><ul><li>回归一词指的是我们根据之前的数据预测出一个准确的输出值</li><li>小写的m来表示训练样本的数目</li><li>x来表示输入变量，往往也被称为特征量</li><li>并且我们将用y来表示输出变量或者目标变量</li><li>h是一个从x到y的函数映射</li></ul><script type="math/tex; mode=display">\Large{h\theta(x)=\theta_0+\theta_1*x}</script><h2 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h2><script type="math/tex; mode=display">\large{J(\theta_0,\theta_1)=\frac{1}{2m}\sum_{i=1}^{m}(\hat{y_i}-y_i)^2=\frac{1}{2m}\sum_{i=1}^{m}(h_0(x_i)-y_i)^2}</script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 机器学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>半导体器件基础</title>
       <link href="/posts/336455097/"/>
       <url>/posts/336455097/</url>
